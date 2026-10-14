@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Какая профессия тебе подходит? Тест от Ventorme</title>
+<meta name="description" content="Ответь на 4 вопроса и узнай своё направление. Точный тест на профессию и план поступления — бесплатно в Ventorme.">
+<meta name="theme-color" content="#3B47FF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Какая профессия тебе подходит? Тест — 4 вопроса">
+<meta property="og:description" content="Узнай своё направление, а точный тест и план поступления получи бесплатно в Ventorme.">
+<meta property="og:image" content="og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233B47FF'/%3E%3Cpath d='M18 22l14 22 14-22' fill='none' stroke='%23DFFF00' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap">
+<!-- Яндекс Метрика (по желанию): вставьте код счётчика сюда и укажите его номер в METRIKA_ID внизу страницы. -->
+<style>
+  :root {
+    --blue: #3B47FF;
+    --blue-press: #2B36E6;
+    --lime: #DFFF00;
+    --lime-soft: #F4FFC2;
+    --ink: #15172E;
+    --muted: #585B76;
+    --paper: #F4F5FF;
+    --line: #E2E4F2;
+    --tint: #ECEEFF;
+    --font: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+    --hdr: 56px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: calc(var(--hdr) + 12px);
+  }
+
+  body {
+    margin: 0;
+    padding-bottom: 84px;
+    font: 500 16px/1.5 var(--font);
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, p { margin: 0; }
+  a { color: inherit; }
+  button { font: inherit; color: inherit; }
+
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; border-radius: 8px; }
+  .top :focus-visible, .hero :focus-visible, .final :focus-visible { outline-color: #fff; }
+  .quiz :focus-visible { outline-color: var(--blue); }
+
+  .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+  /* Шапка: кнопка регистрации видна всегда, в том числе на телефоне */
+  .top {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--blue);
+    color: #fff;
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .top .wrap { height: var(--hdr); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-size: 23px; font-weight: 800; letter-spacing: -0.03em; }
+  .btn-sm {
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 12px;
+    background: #fff;
+    color: var(--blue);
+    font-size: 15px;
+    font-weight: 800;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-sm:active { background: #E6E8FF; }
+
+  /* Первый экран: заголовок и сразу первый вопрос теста */
+  .hero { background: var(--blue); color: #fff; padding: 4px 0 22px; border-radius: 0 0 28px 28px; }
+  .hero-grid { display: grid; gap: 16px; }
+  .hero h1 {
+    font-size: clamp(29px, 8.3vw, 58px);
+    line-height: 1.06;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    max-width: 15ch;
+    text-wrap: balance;
+  }
+  .lead { margin-top: 8px; font-size: 15px; line-height: 1.45; color: rgba(255, 255, 255, 0.9); max-width: 42ch; }
+  .skip { justify-self: start; padding: 4px 0; color: #fff; font-size: 15px; font-weight: 700; text-underline-offset: 4px; }
+
+  .quiz {
+    background: var(--lime);
+    color: var(--ink);
+    border-radius: 24px;
+    padding: 16px;
+    min-height: 300px;
+    scroll-margin-top: calc(var(--hdr) + 12px);
+  }
+  .q-meta { display: flex; align-items: center; gap: 10px; min-height: 28px; font-size: 13px; font-weight: 800; }
+  .q-bar { flex: 1; height: 6px; border-radius: 99px; background: rgba(21, 23, 46, 0.15); overflow: hidden; }
+  .q-bar i { display: block; height: 100%; border-radius: 99px; background: var(--ink); transition: width 0.3s ease; }
+  .q-back { border: 0; background: none; padding: 4px 2px; font-size: 13px; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .q-title { margin: 10px 0 12px; font-size: 20px; line-height: 1.22; font-weight: 800; letter-spacing: -0.01em; outline: none; }
+  .opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .opts.one { grid-template-columns: minmax(0, 1fr); }
+  .opt span:last-child { min-width: 0; overflow-wrap: break-word; }
+  .opt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 58px;
+    padding: 10px 12px;
+    border: 2px solid transparent;
+    border-radius: 16px;
+    background: #fff;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.12s, color 0.12s;
+  }
+  .opts.one .opt { min-height: 52px; }
+  .opt .e { flex: none; font-size: 22px; line-height: 1; }
+  .opts:not(.one) .opt { gap: 8px; padding: 10px; font-size: 14px; }
+  .opts:not(.one) .opt .e { font-size: 20px; }
+  @media (max-width: 350px) {
+    .opts:not(.one) .opt { flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px; }
+  }
+  @media (hover: hover) { .opt:hover { border-color: var(--ink); } }
+  .opt:active, .opt.picked { background: var(--ink); color: #fff; }
+
+  .res-k { font-size: 14px; font-weight: 800; }
+  .res-dir { margin: 2px 0 4px; font-size: clamp(24px, 7.6vw, 30px); line-height: 1.08; font-weight: 800; letter-spacing: -0.02em; outline: none; }
+  .res-alt { font-size: 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; padding: 0; list-style: none; }
+  .chips li { padding: 6px 12px; border-radius: 99px; background: #fff; font-size: 14px; font-weight: 700; }
+  .res-next { margin-bottom: 14px; padding: 12px 14px; border-radius: 16px; background: rgba(255, 255, 255, 0.72); font-size: 15px; line-height: 1.45; }
+  .res-where { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(21, 23, 46, 0.18); font-size: 14px; line-height: 1.45; }
+  .res-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; }
+  .link-btn { border: 0; background: none; padding: 8px 0; font-size: 14px; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .res-note { font-size: 12px; opacity: 0.75; }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 56px;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 16px;
+    background: var(--blue);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active { background: var(--blue-press); }
+  .micro { margin-top: 8px; font-size: 13px; text-align: center; }
+
+  /* Подсказка для встроенных браузеров Instagram, Facebook, TikTok */
+  .inapp { margin-top: 12px; padding: 12px 14px; border-radius: 14px; background: #fff; color: var(--ink); font-size: 14px; line-height: 1.4; text-align: left; }
+  .inapp b { display: block; margin-bottom: 2px; }
+  .inapp-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .chip-btn {
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 14px;
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Секции ниже первого экрана */
+  .sec { padding-top: 44px; }
+  .sec h2 { font-size: clamp(25px, 6.8vw, 40px); line-height: 1.1; font-weight: 800; letter-spacing: -0.025em; max-width: 18ch; text-wrap: balance; }
+  .sec-lead { margin-top: 8px; color: var(--muted); max-width: 52ch; }
+
+  .panel { margin-top: 18px; padding: 4px 18px; border: 1px solid var(--line); border-radius: 24px; background: #fff; }
+  .row { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; padding: 16px 0; border-top: 1px solid var(--line); }
+  .row:first-child { border-top: 0; }
+  .ico { width: 40px; height: 40px; border-radius: 12px; background: var(--tint); color: var(--blue); display: grid; place-items: center; }
+  .ico svg { width: 22px; height: 22px; }
+  .row h3 { font-size: 17px; line-height: 1.3; font-weight: 800; }
+  .row p { margin-top: 2px; font-size: 15px; line-height: 1.45; color: var(--muted); }
+  .free { margin-top: 12px; padding: 14px 16px; border-radius: 16px; background: var(--lime-soft); font-size: 15px; line-height: 1.45; }
+
+  .steps { margin: 20px 0 0; padding: 0; list-style: none; }
+  .steps li { position: relative; display: grid; grid-template-columns: 40px 1fr; gap: 14px; padding-bottom: 22px; }
+  .steps li:last-child { padding-bottom: 0; }
+  .steps li::before { content: ""; position: absolute; left: 19px; top: 46px; bottom: 4px; width: 2px; background: var(--line); }
+  .steps li:last-child::before { display: none; }
+  .num { width: 40px; height: 40px; border-radius: 50%; background: var(--blue); color: #fff; display: grid; place-items: center; font-size: 17px; font-weight: 800; }
+  .steps h3 { padding-top: 7px; font-size: 18px; line-height: 1.3; font-weight: 800; }
+  .steps p { margin-top: 2px; font-size: 15px; color: var(--muted); }
+
+  .faq { display: grid; gap: 8px; margin-top: 18px; }
+  .faq details { border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+  .faq summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 18px;
+    list-style: none;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.35;
+    cursor: pointer;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "";
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-right: 2.5px solid var(--blue);
+    border-bottom: 2.5px solid var(--blue);
+    transform: translateY(-3px) rotate(45deg);
+    transition: transform 0.2s;
+  }
+  .faq details[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+  .faq details p { padding: 0 18px 16px; font-size: 15px; line-height: 1.5; color: var(--muted); }
+
+  .final { margin-top: 48px; padding: 28px 20px; border-radius: 28px; background: var(--blue); color: #fff; }
+  .final h2 { font-size: clamp(26px, 7vw, 40px); line-height: 1.1; font-weight: 800; letter-spacing: -0.025em; max-width: 16ch; }
+  .final p { margin-top: 10px; color: rgba(255, 255, 255, 0.9); max-width: 44ch; }
+  .btn-lime { margin-top: 20px; background: var(--lime); color: var(--ink); }
+  .btn-lime:active { background: #CBE800; }
+  .final .micro { color: rgba(255, 255, 255, 0.85); }
+
+  .foot { padding: 28px 0 32px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+  .foot p + p { margin-top: 6px; }
+
+  /* Липкая кнопка внизу экрана на телефоне */
+  .sticky {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(244, 245, 255, 0.97);
+    border-top: 1px solid var(--line);
+    transform: translateY(110%);
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0.25s;
+  }
+  .sticky.show { transform: none; visibility: visible; }
+  .sticky .btn { min-height: 52px; font-size: 16px; }
+  @supports ((-webkit-backdrop-filter: blur(8px)) or (backdrop-filter: blur(8px))) {
+    .sticky { background: rgba(244, 245, 255, 0.86); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+  }
+
+  @media (min-width: 900px) {
+    :root { --hdr: 68px; }
+    body { padding-bottom: 0; }
+    .wrap { padding: 0 32px; }
+    .brand { font-size: 26px; }
+    .hero { padding: 24px 0 64px; border-radius: 0 0 48px 48px; }
+    .hero-grid { grid-template-columns: minmax(0, 1fr) 440px; grid-template-areas: "intro quiz" "skip quiz"; column-gap: 56px; row-gap: 0; align-items: center; }
+    .intro { grid-area: intro; align-self: end; }
+    .quiz { grid-area: quiz; padding: 24px; min-height: 0; }
+    .opt, .opts:not(.one) .opt { min-height: 66px; padding: 12px; font-size: 15px; }
+    .skip { grid-area: skip; align-self: start; margin-top: 20px; }
+    .lead { margin-top: 16px; font-size: 19px; }
+    .q-title { font-size: 22px; }
+    .sec { padding-top: 72px; }
+    .panel { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; padding: 8px 28px; }
+    .row:nth-child(2) { border-top: 0; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .steps li { grid-template-columns: 1fr; padding-bottom: 0; }
+    .steps li::before { display: none; }
+    .steps h3 { padding-top: 0; margin-top: 12px; }
+    .faq { grid-template-columns: 1fr 1fr; align-items: start; }
+    .final { display: grid; grid-template-columns: minmax(0, 1fr) 380px; column-gap: 48px; align-items: center; padding: 48px; }
+    .final .btn-lime { margin-top: 0; }
+    .sticky { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <span class="brand" aria-label="Ventorme">ventorme</span>
+    <a class="btn-sm" href="https://ventorme.ai/register?utm_source=hacknext&amp;utm_campaign=team-128" data-cta="header">Регистрация</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="intro">
+        <h1 id="hero-title">Какая профессия тебе подходит?</h1>
+        <p class="lead">Ответь на&nbsp;4&nbsp;вопроса и&nbsp;узнай своё направление. Точный тест и&nbsp;план поступления&nbsp;— бесплатно в&nbsp;Ventorme.</p>
+      </div>
+      <div class="quiz" id="quiz" aria-live="polite">
+        <noscript>
+          <p class="q-title">Мини-тест работает с&nbsp;включённым JavaScript.</p>
+          <a class="btn" href="https://ventorme.ai/register?utm_source=hacknext&amp;utm_campaign=team-128" data-cta="noscript">Создать аккаунт в&nbsp;Ventorme</a>
+        </noscript>
+      </div>
+      <a class="skip" href="https://ventorme.ai/register?utm_source=hacknext&amp;utm_campaign=team-128" data-cta="skip">Без теста&nbsp;— сразу к&nbsp;регистрации</a>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="what-title">
+    <div class="wrap">
+      <h2 id="what-title">Что внутри Ventorme</h2>
+      <p class="sec-lead">Выбор профессии, вузы и&nbsp;подготовка к&nbsp;поступлению&nbsp;— в&nbsp;одном аккаунте.</p>
+      <div class="panel">
+        <div class="row">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg></span>
+          <div><h3>Тест на&nbsp;профессию</h3><p>8&nbsp;вопросов, 2&nbsp;минуты и&nbsp;процент совпадения с&nbsp;профессиями.</p></div>
+        </div>
+        <div class="row">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9.5 12 5l9.5 4.5L12 14z"/><path d="M6.5 11.5V16c0 1.4 2.5 3 5.5 3s5.5-1.6 5.5-3v-4.5"/></svg></span>
+          <div><h3>Подбор вузов</h3><p>Больше 1000 вузов в&nbsp;Казахстане и&nbsp;за&nbsp;рубежом под твой профиль.</p></div>
+        </div>
+        <div class="row">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M8.5 7.5h7M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/></svg></span>
+          <div><h3>Калькулятор гранта</h3><p>Покажет шанс на&nbsp;грант по&nbsp;баллам ЕНТ.</p></div>
+        </div>
+        <div class="row">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span>
+          <div><h3>IELTS и&nbsp;SAT</h3><p>Проверка уровня, тренажёры и&nbsp;пробники с&nbsp;разбором ошибок.</p></div>
+        </div>
+        <div class="row">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4.5L19.3 9.2a2.1 2.1 0 0 0-3-3L5.5 17 4 20z"/><path d="m14.5 7.5 3 3"/></svg></span>
+          <div><h3>Эссе и&nbsp;заявки</h3><p>Помощь с&nbsp;мотивационным эссе и&nbsp;подачей документов.</p></div>
+        </div>
+        <div class="row">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12.5c0 3.6-3.6 6.5-8 6.5-1 0-2-.1-2.9-.4L4 20l1.4-3.6C4.5 15.3 4 14 4 12.5 4 8.9 7.6 6 12 6s8 2.9 8 6.5z"/><path d="M12 9.6l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg></span>
+          <div><h3>ИИ-помощник Venti</h3><p>Отвечает на&nbsp;вопросы о&nbsp;профессиях и&nbsp;поступлении.</p></div>
+        </div>
+      </div>
+      <p class="free"><b>Бесплатно:</b> тест на&nbsp;профессию, проверка уровня IELTS и&nbsp;SAT, портфолио. Остальное входит в&nbsp;тариф Plus, подключать его не&nbsp;обязательно.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="how-title">
+    <div class="wrap">
+      <h2 id="how-title">Как начать</h2>
+      <ol class="steps">
+        <li><span class="num" aria-hidden="true">1</span><div><h3>Создай аккаунт</h3><p>Через Google или по&nbsp;почте.</p></div></li>
+        <li><span class="num" aria-hidden="true">2</span><div><h3>Заверши настройку профиля</h3><p>Пара вопросов о&nbsp;тебе, чтобы подбор был точнее.</p></div></li>
+        <li><span class="num" aria-hidden="true">3</span><div><h3>Пройди тест и&nbsp;получи план</h3><p>Профессии с&nbsp;процентом совпадения и&nbsp;план поступления.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="faq-title">
+    <div class="wrap">
+      <h2 id="faq-title">Частые вопросы</h2>
+      <div class="faq">
+        <details><summary>Это бесплатно?</summary><p>Да, регистрация бесплатная. Без оплаты доступны тест на&nbsp;профессию, проверка уровня IELTS и&nbsp;SAT и&nbsp;портфолио. Расширенные функции входят в&nbsp;тариф Plus, его можно не&nbsp;подключать.</p></details>
+        <details><summary>Что я получу сразу после регистрации?</summary><p>Тест на&nbsp;профессию с&nbsp;процентом совпадения и&nbsp;персональный план поступления: какие направления тебе подходят и&nbsp;чего не&nbsp;хватает для поступления.</p></details>
+        <details><summary>Ventorme только для поступления за&nbsp;границу?</summary><p>Нет. Там есть и&nbsp;вузы Казахстана, и&nbsp;калькулятор гранта по&nbsp;ЕНТ, а&nbsp;тест на&nbsp;профессию пригодится при любом выборе вуза.</p></details>
+        <details><summary>У&nbsp;меня не&nbsp;идеальные оценки. Есть смысл?</summary><p>Да. Ventorme подбирает вузы под твой реальный профиль и&nbsp;показывает, что стоит подтянуть.</p></details>
+        <details><summary>Родители увидят мою переписку?</summary><p>Нет. Если подключить родительский кабинет, родители увидят дедлайны, статусы и&nbsp;общий прогресс, но&nbsp;не&nbsp;твою переписку с&nbsp;ИИ-помощником.</p></details>
+        <details><summary>Что с&nbsp;моими данными?</summary><p>Ventorme шифрует данные и&nbsp;не&nbsp;передаёт их&nbsp;третьим лицам без твоего согласия.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="final" id="start" aria-labelledby="final-title">
+      <div>
+        <h2 id="final-title">Начни с&nbsp;теста на&nbsp;профессию</h2>
+        <p>Бесплатно и&nbsp;без обязательств. Ventorme уже пользуются больше 1000 студентов.</p>
+      </div>
+      <div>
+        <a class="btn btn-lime" href="https://ventorme.ai/register?utm_source=hacknext&amp;utm_campaign=team-128" data-cta="final">Создать аккаунт</a>
+        <p class="micro">Регистрация на&nbsp;официальном сайте ventorme.ai</p>
+        <div class="inapp" data-inapp hidden></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>Ventorme&nbsp;— ИИ-платформа для выбора профессии и&nbsp;поступления.</p>
+    <p>Эту страницу сделала команда 128 на&nbsp;хакатоне HACKNEXT × Ventorme. Регистрация проходит на&nbsp;официальном сайте ventorme.ai.</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky">
+  <a class="btn" href="https://ventorme.ai/register?utm_source=hacknext&amp;utm_campaign=team-128" data-cta="sticky">Создать аккаунт бесплатно</a>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var TEAM_URL = "https://ventorme.ai/register?utm_source=hacknext&utm_campaign=team-128";
+
+  // Яндекс Метрика (по желанию): укажите номер счётчика, цели придут в отчёты сами:
+  // quiz_start, quiz_q1..quiz_q4, quiz_finish, cta_click, share, copy_link, inapp_hint
+  var METRIKA_ID = 0;
+
+  function track(goal, params) {
+    try {
+      if (METRIKA_ID && typeof window.ym === "function") window.ym(METRIKA_ID, "reachGoal", goal, params || {});
+    } catch (e) { /* аналитика не должна ломать страницу */ }
+  }
+
+  var reduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+  // ---------- Вопросы мини-теста ----------
+  // w: сколько баллов ответ добавляет направлениям
+  var Q = [
+    { q: "Что тебе интереснее всего?", o: [
+      { e: "💻", t: "IT, технологии", w: { tech: 3 } },
+      { e: "🧬", t: "Медицина, биология", w: { bio: 3 } },
+      { e: "🎨", t: "Дизайн, творчество", w: { art: 3 } },
+      { e: "📈", t: "Бизнес, финансы", w: { biz: 3 } },
+      { e: "🤝", t: "Люди, психология", w: { soc: 3 } },
+      { e: "⚖️", t: "Право, общество", w: { law: 3 } }
+    ] },
+    { q: "Какие предметы даются легче?", o: [
+      { e: "➗", t: "Математика, физика", w: { tech: 2, biz: 1 } },
+      { e: "⌨️", t: "Информатика", w: { tech: 2 } },
+      { e: "🧪", t: "Биология, химия", w: { bio: 2 } },
+      { e: "📜", t: "История, право", w: { law: 2 } },
+      { e: "🗣️", t: "Языки, литература", w: { soc: 1, law: 1, art: 1 } },
+      { e: "🖌️", t: "Рисование, музыка", w: { art: 2 } }
+    ] },
+    { q: "Что тебе больше нравится делать?", one: true, o: [
+      { e: "🔍", t: "Разбираться, как всё устроено", w: { tech: 1, bio: 1 } },
+      { e: "💡", t: "Придумывать что-то новое", w: { art: 2, biz: 1 } },
+      { e: "🫶", t: "Помогать и объяснять людям", w: { soc: 2, bio: 1 } },
+      { e: "🚀", t: "Организовывать и вести за собой", w: { biz: 2, law: 1 } }
+    ] },
+    { q: "Где хочешь учиться?", one: true, o: [
+      { e: "🇰🇿", t: "В Казахстане", where: "kz" },
+      { e: "✈️", t: "За рубежом", where: "abroad" },
+      { e: "🤔", t: "Пока не знаю", where: "both" }
+    ] }
+  ];
+
+  var D = {
+    tech: { t: "Технологии и IT", p: ["Разработчик", "Аналитик данных", "Инженер ИИ", "Кибербезопасность"] },
+    bio: { t: "Медицина и науки о жизни", p: ["Врач", "Биотехнолог", "Фармацевт", "Генетик"] },
+    art: { t: "Дизайн и креатив", p: ["UX/UI-дизайнер", "Архитектор", "Моушн-дизайнер", "Креативный продюсер"] },
+    biz: { t: "Бизнес и финансы", p: ["Финансовый аналитик", "Маркетолог", "Предприниматель", "Продакт-менеджер"] },
+    soc: { t: "Люди и психология", p: ["Психолог", "Педагог", "HR-специалист", "Социолог"] },
+    law: { t: "Право и общество", p: ["Юрист", "Дипломат", "Журналист", "Политолог"] }
+  };
+
+  var NEXT = {
+    kz: "Для вузов Казахстана там есть калькулятор гранта по баллам ЕНТ.",
+    abroad: "Для учёбы за рубежом там есть подбор из 1000+ вузов, IELTS, SAT и помощь с эссе.",
+    both: "Страну выберешь позже: Ventorme подбирает вузы и в Казахстане, и за рубежом."
+  };
+
+  var ORDER = ["tech", "bio", "art", "biz", "soc", "law"];
+
+  // ---------- Встроенные браузеры приложений ----------
+  var ua = navigator.userAgent || "";
+  var isAndroid = /Android/i.test(ua);
+  var isIOS = /iPhone|iPad|iPod/i.test(ua);
+  var appName = /Instagram/i.test(ua) ? "Instagram"
+    : /FBAN|FBAV|FB_IAB|FBIOS|FB4A/i.test(ua) ? "Facebook"
+    : /musical_ly|TikTok|Bytedance/i.test(ua) ? "TikTok"
+    : /Snapchat/i.test(ua) ? "Snapchat" : "";
+  var inApp = !!appName || (isAndroid && /; wv\)/i.test(ua)) || (isIOS && !/Safari\//i.test(ua));
+  var chromeIntent = "intent://" + TEAM_URL.replace(/^https:\/\//, "") +
+    "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(TEAM_URL) + ";end";
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c];
+    });
+  }
+
+  // Неразрывный пробел после коротких слов («и», «в», «по»), чтобы они не висели в конце строки
+  function txt(s) {
+    var re = /(^|[\s«])([А-Яа-яЁёA-Za-z]{1,2}) /g;
+    return esc(String(s).replace(re, "$1$2 ").replace(re, "$1$2 "));
+  }
+
+  function inappInner() {
+    var title = appName ? "Открыто в " + appName + "?" : "Открыто внутри приложения?";
+    return "<b>" + esc(title) + "</b>" +
+      txt("Во встроенном браузере вход через Google может не сработать. Нажми ⋯ вверху экрана и открой страницу в браузере. Или регистрируйся по почте.") +
+      "<div class=\"inapp-actions\">" +
+      "<button type=\"button\" class=\"chip-btn\" data-copy>Скопировать ссылку</button>" +
+      (isAndroid ? "<a class=\"chip-btn\" href=\"" + esc(chromeIntent) + "\" data-cta=\"chrome\">Открыть в Chrome</a>" : "") +
+      "</div>";
+  }
+
+  var hintShown = false;
+  function showInappHints(root) {
+    if (!inApp) return;
+    var els = (root || document).querySelectorAll("[data-inapp]");
+    for (var i = 0; i < els.length; i++) {
+      els[i].innerHTML = inappInner();
+      els[i].hidden = false;
+    }
+    if (!hintShown) { hintShown = true; track("inapp_hint", { app: appName || "webview" }); }
+  }
+
+  // ---------- Копирование и «поделиться» ----------
+  function fallbackCopy(text) {
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.top = "0";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      var ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      return ok;
+    } catch (e) { return false; }
+  }
+
+  function copyText(text, btn) {
+    var label = btn.textContent;
+    function done() {
+      btn.textContent = "Скопировано";
+      setTimeout(function () { btn.textContent = label; }, 2000);
+    }
+    function fail() {
+      if (fallbackCopy(text)) done();
+      else window.prompt("Скопируй ссылку:", text);
+    }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, fail);
+    else fail();
+  }
+
+  var lastDir = "";
+  function shareQuiz(btn) {
+    var url = location.origin + location.pathname;
+    var text = lastDir
+      ? "Мне выпало направление «" + lastDir + "». Узнай своё, тут 4 вопроса:"
+      : "Тест: какая профессия тебе подходит, 4 вопроса:";
+    track("share");
+    if (navigator.share) {
+      navigator.share({ title: document.title, text: text, url: url }).catch(function () {});
+    } else {
+      copyText(text + " " + url, btn);
+    }
+  }
+
+  // ---------- Мини-тест ----------
+  var quiz = document.getElementById("quiz");
+  var answers = [];
+  var step = 0;
+  var started = false;
+  var busy = false;
+
+  function focusEl(el) {
+    if (!el) return;
+    try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); }
+  }
+
+  function scrollToQuiz(always) {
+    var r = quiz.getBoundingClientRect();
+    var hdr = document.querySelector(".top").offsetHeight;
+    if (always || r.top < hdr || r.top > window.innerHeight * 0.4) {
+      quiz.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+    }
+  }
+
+  function renderQuestion(moveFocus) {
+    var q = Q[step];
+    var pct = Math.round((step + 1) / Q.length * 100);
+    var html = "<div class=\"q-meta\"><span>Вопрос " + (step + 1) + " из " + Q.length + "</span>" +
+      "<span class=\"q-bar\" role=\"progressbar\" aria-label=\"Прогресс теста\" aria-valuemin=\"1\" aria-valuemax=\"" + Q.length + "\" aria-valuenow=\"" + (step + 1) + "\"><i style=\"width:" + pct + "%\"></i></span>" +
+      (step > 0 ? "<button type=\"button\" class=\"q-back\" data-back>Назад</button>" : "") +
+      "</div>" +
+      "<h2 class=\"q-title\" tabindex=\"-1\">" + txt(q.q) + "</h2>" +
+      "<div class=\"opts" + (q.one ? " one" : "") + "\">";
+    for (var i = 0; i < q.o.length; i++) {
+      html += "<button type=\"button\" class=\"opt" + (answers[step] === i ? " picked" : "") + "\" data-i=\"" + i + "\">" +
+        "<span class=\"e\" aria-hidden=\"true\">" + q.o[i].e + "</span><span>" + (q.one ? txt(q.o[i].t) : esc(q.o[i].t)) + "</span></button>";
+    }
+    quiz.innerHTML = html + "</div>";
+    if (moveFocus) focusEl(quiz.querySelector(".q-title"));
+  }
+
+  function result() {
+    var s = { tech: 0, bio: 0, art: 0, biz: 0, soc: 0, law: 0 };
+    for (var qi = 0; qi < 3; qi++) {
+      var w = Q[qi].o[answers[qi]].w;
+      for (var k in w) if (Object.prototype.hasOwnProperty.call(w, k)) s[k] += w[k];
+    }
+    var first = Object.keys(Q[0].o[answers[0]].w)[0];
+    var order = ORDER.slice().sort(function (a, b) {
+      return (s[b] - s[a]) || ((b === first) - (a === first)) || (ORDER.indexOf(a) - ORDER.indexOf(b));
+    });
+    return { main: order[0], second: s[order[1]] > 0 ? order[1] : "" };
+  }
+
+  function renderResult() {
+    var r = result();
+    var where = Q[3].o[answers[3]].where;
+    var d = D[r.main];
+    lastDir = d.t;
+    var chips = "";
+    for (var i = 0; i < d.p.length; i++) chips += "<li>" + txt(d.p[i]) + "</li>";
+    quiz.innerHTML =
+      "<p class=\"res-k\">Тебе может подойти</p>" +
+      "<h2 class=\"res-dir\" tabindex=\"-1\">" + txt(d.t) + "</h2>" +
+      (r.second ? "<p class=\"res-alt\">" + txt("Ещё присмотрись: " + D[r.second].t) + "</p>" : "") +
+      "<ul class=\"chips\" aria-label=\"Примеры профессий\">" + chips + "</ul>" +
+      "<p class=\"res-next\">" + txt("Точнее покажет бесплатный тест Ventorme из 8 вопросов: процент совпадения с профессиями и план поступления.") + "</p>" +
+      "<a class=\"btn\" href=\"" + esc(TEAM_URL) + "\" data-cta=\"result\">Создать аккаунт и&nbsp;пройти&nbsp;тест</a>" +
+      "<p class=\"micro\">Регистрация бесплатная, через Google или почту.</p>" +
+      "<div class=\"inapp\" data-inapp hidden></div>" +
+      "<p class=\"res-where\">" + txt(NEXT[where]) + "</p>" +
+      "<div class=\"res-actions\">" +
+      "<button type=\"button\" class=\"link-btn\" data-share>Отправить тест другу</button>" +
+      "<button type=\"button\" class=\"link-btn\" data-restart>Пройти заново</button></div>" +
+      "<p class=\"res-note\">Это быстрый ориентир по 4 ответам, а не точный результат.</p>";
+    showInappHints(quiz);
+    track("quiz_finish", { dir: r.main, where: where });
+    focusEl(quiz.querySelector(".res-dir"));
+    scrollToQuiz(true);
+  }
+
+  quiz.addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("button") : null;
+    if (!b || busy) return;
+
+    if (b.hasAttribute("data-i")) {
+      var idx = +b.getAttribute("data-i");
+      if (!started) { started = true; track("quiz_start"); }
+      answers[step] = idx;
+      track("quiz_q" + (step + 1), { a: idx });
+      var picked = quiz.querySelectorAll(".opt.picked");
+      for (var i = 0; i < picked.length; i++) picked[i].classList.remove("picked");
+      b.classList.add("picked");
+      busy = true;
+      setTimeout(function () {
+        busy = false;
+        step += 1;
+        if (step < Q.length) renderQuestion(true);
+        else renderResult();
+      }, reduced ? 0 : 170);
+    } else if (b.hasAttribute("data-back")) {
+      step = Math.max(0, step - 1);
+      renderQuestion(true);
+    } else if (b.hasAttribute("data-restart")) {
+      answers = [];
+      step = 0;
+      renderQuestion(true);
+      scrollToQuiz();
+    } else if (b.hasAttribute("data-share")) {
+      shareQuiz(b);
+    }
+  });
+
+  // Копирование ссылки и подсчёт кликов по кнопкам регистрации
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    if (!t.closest) return;
+    var copyBtn = t.closest("[data-copy]");
+    if (copyBtn) {
+      track("copy_link");
+      copyText(TEAM_URL, copyBtn);
+      return;
+    }
+    var cta = t.closest("[data-cta]");
+    if (cta) track("cta_click", { place: cta.getAttribute("data-cta") });
+  });
+
+  // ---------- Липкая кнопка на телефоне ----------
+  var sticky = document.getElementById("sticky");
+  var finalBlock = document.getElementById("start");
+  if ("IntersectionObserver" in window) {
+    var quizOn = true;
+    var finalOn = false;
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].target === quiz) quizOn = entries[i].isIntersecting;
+        else finalOn = entries[i].isIntersecting;
+      }
+      sticky.classList.toggle("show", !quizOn && !finalOn);
+    });
+    io.observe(quiz);
+    io.observe(finalBlock);
+  } else {
+    sticky.classList.add("show");
+  }
+
+  renderQuestion(false);
+  showInappHints(document);
+})();
+</script>
+</body>
+</html>
